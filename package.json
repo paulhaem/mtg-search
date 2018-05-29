@@ -32,6 +32,7 @@
     "hbsfy": "^2.7.0",
     "jquery": "^3.3.1",
     "load-grunt-tasks": "^3.3.0",
+    "qs": "^6.5.2",
     "serve-static": "^1.13.2",
     "time-grunt": "^1.2.1",
     "uglifyify": "^3.0.4"
