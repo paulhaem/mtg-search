@@ -1,5 +1,5 @@
 function query(field, qString) {
-  fetch(`http://127.0.0.1:8983/solr/gettingstarted/select?q=*:*`)
+  fetch('http://78.104.86.90:8983/solr/gettingstarted/select?q=*:*')
   .then((res) => {
     console.log(res)
   })

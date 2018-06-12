@@ -10,7 +10,6 @@ const $app = $('#app')
 
 function index() {
   $app.html(homeTpl())
-  query()
   $('#solr-query').submit(function() {
 
     fetch('http://78.104.86.90:8983/solr/gettingstarted/select?q=*:*')
@@ -18,18 +17,16 @@ function index() {
         console.log(res)
         return res.json()
       })
-      .then(json => {
-        $('#results').text(json)
+      .then(res => {
+        console.log(res);
+
+        //$('#results').text(json)
       })
       .catch(err => {
         console.error(err)
       })
 
-    /*request($('#title-field').val())
-      .then((res) => {
-        $('#results').text(res)
-      })
-    return false*/
+    return false
   })
 
 }
