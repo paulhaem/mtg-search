@@ -1,6 +1,12 @@
 # mtg-search
 > Stefan Elsenhuber, Philipp Hamerle, Alexander Hämmerle and Lukas Kern
 
+## Install
+```bash
+npm install
+npm start
+```
+
 ## Feld Typen
 ```bash
 card
