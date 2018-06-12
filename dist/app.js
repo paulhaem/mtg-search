@@ -12844,10 +12844,6 @@ var _runtime = require('hbsfy/runtime');
 
 var _runtime2 = _interopRequireDefault(_runtime);
 
-var _solrQuery = require('./solr-query');
-
-var _solrQuery2 = _interopRequireDefault(_solrQuery);
-
 var _home = require('./templates/home.hbs');
 
 var _home2 = _interopRequireDefault(_home);
@@ -12858,11 +12854,20 @@ var _notFound2 = _interopRequireDefault(_notFound);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import query from './solr-query'
+
 // templates
+function query(field, qString) {
+  fetch('127.0.0.1:8983/solr/gettingstarted/select?q=*:*').then(function (res) {
+    console.log(res);
+  });
+}
+
 var $app = (0, _jquery2.default)('#app');
 
 function index() {
   $app.html((0, _home2.default)());
+  query();
   (0, _jquery2.default)('#solr-query').submit(function () {
     console.info((0, _jquery2.default)('#title-field').val());
     return false;
@@ -12877,25 +12882,14 @@ function notFound() {
 (0, _page2.default)('*', notFound);
 (0, _page2.default)();
 
-},{"./solr-query":25,"./templates/home.hbs":26,"./templates/not-found.hbs":27,"hbsfy/runtime":20,"jquery":21,"page":22}],25:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-function query(field, qString) {
-  fetch('localhost:8983/solr/#/gettingstarted/query');
-}
-exports.query = query;
-
-},{}],26:[function(require,module,exports){
+},{"./templates/home.hbs":25,"./templates/not-found.hbs":26,"hbsfy/runtime":20,"jquery":21,"page":22}],25:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<h2>Home</h2>\n<form id=\"solr-query\" action=\" \">\n  <div class=\"form-group\">\n    <input id=\"title-field\" class=\"form-control\" name=\"title\" type=\"text\" placeholder=\"Card Title\">\n    <input class=\"btn btn-primary\" type=\"submit\" value=\"Query\">\n  </div>\n</form>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":20}],27:[function(require,module,exports){
+},{"hbsfy/runtime":20}],26:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
