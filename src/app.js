@@ -11,8 +11,6 @@ const $app = $('#app')
 function index() {
   $app.html(homeTpl())
   $('#solr-query').submit(function() {
-    return false
-
     let queryString = $('#title-field').val()
     fetch(`http://78.104.197.112:8983/solr/gettingstarted/select?q=${queryString}`)
       .then(res => {
@@ -26,7 +24,7 @@ function index() {
       .catch(err => {
         console.error(err)
       })
-
+      return false
   })
 }
 
