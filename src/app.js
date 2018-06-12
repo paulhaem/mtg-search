@@ -10,28 +10,24 @@ const $app = $('#app')
 
 function index() {
   $app.html(homeTpl())
-  query()
   $('#solr-query').submit(function() {
+    return false
 
-    fetch('http://78.104.86.90:8983/solr/gettingstarted/select?q=*:*')
+    let queryString = $('#title-field').val()
+    fetch(`http://78.104.197.112:8983/solr/gettingstarted/select?q=${queryString}`)
       .then(res => {
         console.log(res)
         return res.json()
       })
       .then(json => {
-        $('#results').text(json)
+        console.log(json)
+        //$('#results').text(json)
       })
       .catch(err => {
         console.error(err)
       })
 
-    /*request($('#title-field').val())
-      .then((res) => {
-        $('#results').text(res)
-      })
-    return false*/
   })
-
 }
 
 function notFound() {
