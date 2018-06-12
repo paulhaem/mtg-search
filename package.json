@@ -38,7 +38,6 @@
     "uglifyify": "^3.0.4"
   },
   "dependencies": {
-    "page": "^1.8.4",
-    "solr": "^0.3.0"
+    "page": "^1.8.4"
   }
 }
