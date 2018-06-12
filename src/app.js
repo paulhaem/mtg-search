@@ -6,22 +6,7 @@ import Handlebars from 'hbsfy/runtime'
 import homeTpl from './templates/home.hbs'
 import notFoundTpl from './templates/not-found.hbs'
 
-function query(field, qString) {
-  fetch(`127.0.0.1:8983/solr/gettingstarted/select?q=*:*`)
-  .then((res) => {
-    console.log(res)
-  })
-}
-
 const $app = $('#app')
-
-function request(qString) {
-  fetch('127.0.0.1:8983/solr/gettingstarted/select?q=*:*&wt=json',{ headers: {
-    'Content-Type': 'application/json'}})
-    .then(res => {
-      return JSON.parse(res)
-    })
-}
 
 function index() {
   $app.html(homeTpl())
