@@ -1,0 +1,44 @@
+[
+  {
+    "setName_txt_en": "coolste set ever",
+    "releaseDate_dt": "2004-11-20",
+    "artist_txt_en": "McLean Kendree",
+    "cmc_i": "2",
+    "colors_txt_sort": [
+      "White"
+    ],
+    "multiverseId_i": "439392",
+    "name_txt_en": "Amateur Auteur",
+    "power_i": "2",
+    "rarity_txt_en": "Common",
+    "subtypes_txt_sort": [
+      "Human"
+    ],
+    "text_txt_sort": "Sacrifice Amateur Auteur: Destroy target enchantment.",
+    "toughness_i": "2",
+    "types_txt_sort": [
+      "Creature"
+    ]
+  },
+  {
+    "setName_txt_en": "coolste set ever2",
+    "releaseDate_dt": "2004-11-20",
+    "artist_txt_en": "McLean Kendree",
+    "cmc_i": "2",
+    "colors_txt_sort": [
+      "White"
+    ],
+    "multiverseId_i": "439392",
+    "name_txt_en": "Amateur Auteur",
+    "power_i": "2",
+    "rarity_txt_en": "Common",
+    "subtypes_txt_sort": [
+      "Human"
+    ],
+    "text_txt_sort": "Sacrifice Amateur Auteur: Destroy target enchantment.",
+    "toughness_i": "2",
+    "types_txt_sort": [
+      "Creature"
+    ]
+  }
+]
