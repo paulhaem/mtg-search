@@ -57,7 +57,7 @@ function search(){
         return res.json()
       })
       .then(res => {
-        results(res)
+        results(res, input)
       })
       .catch(err => {
         console.error(err)
@@ -71,9 +71,10 @@ function index() {
   search()
 }
 
-function results(obj){
-  console.log(obj.response);
+function results(obj, input){
+  console.log(obj.response)
   $app.html(resultTpl(obj.response))
+  $('h2 > #query-string').text(input)
   search()
 }
 
