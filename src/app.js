@@ -35,10 +35,9 @@ function search(){
         queryString += color + '+OR+'
       })
       queryString = queryString.substring(0,(queryString.length - 4))
-      console.log(queryString);
 
     }
-
+    console.log(queryString);
 
     let filter = [...filter]
     let queryFilter = ''
