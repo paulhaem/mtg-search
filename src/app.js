@@ -8,9 +8,10 @@ import notFoundTpl from './templates/not-found.hbs'
 import resultTpl from './templates/result.hbs'
 const $app = $('#app')
 
-Handlebars.registerHelper('powers', function(powers){
-  return 2018 - parseInt(date.substr(0,4))
+Handlebars.registerHelper('checker', function(data){
+  return data < 0 ? '*': data
 })
+
 
 function search(){
   $('#solr-query').submit(function() {
@@ -20,7 +21,7 @@ function search(){
 
     if (input[0]) { // empty check
       for (const str of input) {
-        queryString += `setName_txt_en:*${str}* OR artist_txt_en:*${str}* OR name_txt_en:*${str}* OR text_txt_sort:*${str}*`
+        queryString += `setName_txt_en:*${str}* artist_txt_en:*${str}* name_txt_en:*${str}* text_txt_sort:*${str}* `
       }
     }
     // query mit filter ??
