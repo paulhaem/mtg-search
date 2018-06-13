@@ -11,7 +11,17 @@ const $app = $('#app')
 function index() {
   $app.html(homeTpl())
   $('#solr-query').submit(function() {
-    let queryString = $('#title-field').val()
+    let helper = $('#title-field').val()
+    helper = helper.split(' ')
+    let queryString = ''
+    for (const str of helper) {
+      queryString += `setName_txt_en:${str} OR `
+      queryString += `artist_txt_en:${str} OR `
+      queryString += `name_txt_en:${str} OR `
+      queryString += `text_txt_sort:${str}`
+    }
+    console.log($('#title-field').val().split(' '));
+
     let filter = [...filter]
     let queryFilter = ''
     if (filter[0]) {
