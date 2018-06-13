@@ -12,13 +12,14 @@ const $app = $('#app')
 function index() {
   $app.html(homeTpl())
   $('#solr-query').submit(function() {
-
-    fetch('http://78.104.86.90:8983/solr/gettingstarted/select?q=*:*')
+    let queryString = $('#title-field').val()
+    fetch(`http://78.104.197.112:8983/solr/gettingstarted/select?q=${queryString}`)
       .then(res => {
         console.log(res)
         return res.json()
       })
       .then(res => {
+        console.log(res);
         $app.html(homeTpl(res.response.docs))
 
         //$('#results').text(json)
@@ -26,10 +27,8 @@ function index() {
       .catch(err => {
         console.error(err)
       })
-
-    return false
+      return false
   })
-
 }
 
 function notFound() {
