@@ -25,9 +25,19 @@ function search(){
       }
     }
     // query mit filter ??
-    //queryString += ` AND cmc_i:2`
+    let choosen = []
+    $('.form-check-input').each(function(index, el) {
+      if(el.checked) choosen.push(el.value)
+    })
+    if(choosen.length > 0 ) {
+      queryString += ` AND colors_txt_sort:`
+      choosen.forEach(color => {
+        queryString += color + '+OR+'
+      })
+      queryString = queryString.substring(0,(queryString.length - 4))
+      console.log(queryString);
 
-    console.log(queryString);
+    }
 
 
     let filter = [...filter]
@@ -36,7 +46,7 @@ function search(){
       for (const str of filter) {
         queryFilter += str + ','
       }
-      queryFilter.substring(0,queryFilter.length -1)
+      queryFilter = queryFilter.substring(0,queryFilter.length -1)
     }
     else{
       queryFilter = '*'
