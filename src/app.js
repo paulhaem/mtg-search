@@ -8,6 +8,7 @@ import notFoundTpl from './templates/not-found.hbs'
 
 const $app = $('#app')
 
+
 function index() {
   $app.html(homeTpl())
   $('#solr-query').submit(function() {
@@ -18,7 +19,7 @@ function index() {
         return res.json()
       })
       .then(res => {
-        console.log(res);
+        $app.html(homeTpl(res.response.docs))
 
         //$('#results').text(json)
       })
