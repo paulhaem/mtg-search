@@ -5,23 +5,46 @@
         <div>{{ image }}</div>
         <h3>Information</h3>
         <p>{{text_txt_sort}}</p>
-        <table>
-          <tr><th>costs</th></tr>
-          <tr><td>{{cmc_i}}</td></tr>
+        <table class="table table-bordered" style="width: 30%">
+          <thead>
+            <tr>
+              <th scope="col">costs</th>
+              <th scope="col">power</th>
+              <th scope="col">toughness</th>
+              <th scope="col">rarity</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>{{cmc_i}}</td>
+            <td>{{power_i}}</td>
+            <td>{{toughness_i}}</td>
+            <td>{{rarity_txt_en}}</td>
+          </tr>
+        </table>
+        <table class="table table-bordered" style="width: 15%">
+          <thead>
+            <tr>
+              <th scope="col">color</th>
+            </tr>
+          </thead>
+
           {{#each colors_txt_sort}}
-            <tr><th>color</th></tr>
-            <tr><td>{{this}}</td></tr>
+            <tr>
+              <td>{{this}}</td>
+            </tr>
           {{/each}}
-          <tr><th>power</th></tr>
-          <tr><td>{{power_i}}</td></tr>
-          <tr><th>toughness</th></tr>
-          <tr><td>{{toughness_i}}</td></tr>
+        </table>
+         <table class="table table-bordered" style="width: 15%">
+          <thead>
+            <tr>
+              <th scope="col">types</th>
+            </tr>
+          </thead>
           {{#each subtypes_txt_sort}}
-            <tr><th>types</th></tr>
-            <tr><td>{{this}}</td></tr>
+            <tr>
+              <td>{{this}}</td>
+            </tr>
           {{/each}}
-          <tr><th>rarity</th></tr>
-          <tr><td>{{rarity_txt_en}}</td></tr>
         </table>
       </div>
     {{/each}}
