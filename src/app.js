@@ -22,6 +22,7 @@ function search(){
     if (input[0]) { // empty check
       for (const str of input) {
         queryString += `setName_txt_en:*${str}*^1 artist_txt_en:*${str}*^1.5 name_txt_en:*${str}*^2 text_txt_sort:*${str}*^1 `
+        queryString += `setName_txt_en:${str}^1 artist_txt_en:${str}^1.5 name_txt_en:${str}^2 text_txt_sort:${str}^1 `
       }
     }
     // query mit filter ??
