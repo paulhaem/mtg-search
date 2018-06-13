@@ -51,8 +51,9 @@ function search(){
     else{
       queryFilter = '*'
     }
-
-    fetch(`http://127.0.0.1:8983/solr/gettingstarted/select?fl=${queryFilter}&q=${queryString}`)
+    input['colors'] = []
+    input['colors'] = choosen
+    fetch(`http://127.0.0.1:8983/solr/gettingstarted/select?fl=${queryFilter}&q=${queryString}&rows=100`)
       .then(res => {
         return res.json()
       })
@@ -74,7 +75,11 @@ function index() {
 function results(obj, input){
   console.log(obj.response)
   $app.html(resultTpl(obj.response))
+  $('h2 > #results-found').text(obj.response.numFound)
   $('h2 > #query-string').text(input)
+  input['colors'].forEach(el => {
+    $(`.form-check-input[value='${el}']`).prop('checked', true)
+  })
   search()
 }
 
