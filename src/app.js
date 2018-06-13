@@ -8,12 +8,13 @@ import notFoundTpl from './templates/not-found.hbs'
 import resultTpl from './templates/result.hbs'
 const $app = $('#app')
 
-// 78.104.197.112
 function index() {
   $app.html(homeTpl())
   $('#solr-query').submit(function() {
     let queryString = $('#title-field').val()
-    fetch(`http://127.0.0.1:8983/solr/gettingstarted/select?q=${queryString}`)
+    let queryFilter = '*'
+
+    fetch(`http://127.0.0.1:8983/solr/gettingstarted/select?fl=${queryFilter}&q=${queryString}`)
       .then(res => {
         return res.json()
       })
@@ -31,7 +32,6 @@ function index() {
 
 function results(obj){
   console.log(obj.response);
-
   $app.html(resultTpl(obj.response))
 }
 

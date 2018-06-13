@@ -1,20 +1,22 @@
 <div id="results">
     {{#each docs}}
-      <h2>{{ docs.name_txt_en }}</h2>
-      <div>{{ docs.image }}</div>
-      <p>{{docs.text}}</p>
-      <h2>Information</h2>
-      <table>
-        <td>{{docs.cmc_i}}</td>
-        {{#each colors}}
-          <td>{{ docs.colors}}</td>
+      <div>
+        <h2>{{ docs.name_txt_en }}</h2>
+        <div>{{ docs.image }}</div>
+        <p>{{docs.text}}</p>
+        <h3>Information</h3>
+        <table>
+          <td>{{docs.cmc_i}}</td>
+          {{#each colors}}
+            <td>{{ docs.colors}}</td>
+          {{/each}}
+          <td>{{docs.power}}</td>
+          <td>{{docs.toughness}}</td>
+          {{#each subtypes}}
+            <td>{{docs.subtypes}}</td>
+          {{/each}}
+          <td>{{docs.rarity}}</td>
         {{/each}}
-        <td>{{docs.power}}</td>
-        <td>{{docs.toughness}}</td>
-        {{#each subtypes}}
-          <td>{{docs.subtypes}}</td>
-        {{/each}}
-        <td>{{docs.rarity}}</td>
-      {{/each}}
-    </table>
+        </table>
+      </div>
   </div>
