@@ -1,0 +1,58 @@
+<form id="solr-query" action=" ">
+  <div class="form-group">
+    <input id="title-field" class="form-control" name="title" type="text" placeholder="Card Title">
+    <input class="btn btn-primary" type="submit" value="Query">
+  </div>
+</form>
+<div id="results">
+    {{#each docs}}
+      <div>
+        <h2>{{ name_txt_en }}</h2>
+        <div>{{ image }}</div>
+        <h3>Information</h3>
+        <p>{{text_txt_sort}}</p>
+        <table class="table table-bordered" style="width: 30%">
+          <thead>
+            <tr>
+              <th scope="col">costs</th>
+              <th scope="col">power</th>
+              <th scope="col">toughness</th>
+              <th scope="col">rarity</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>{{cmc_i}}</td>
+            <td>{{power_i}}</td>
+            <td>{{toughness_i}}</td>
+            <td>{{rarity_txt_en}}</td>
+          </tr>
+        </table>
+        <table class="table table-bordered" style="width: 15%">
+          <thead>
+            <tr>
+              <th scope="col">color</th>
+            </tr>
+          </thead>
+
+          {{#each colors_txt_sort}}
+            <tr>
+              <td>{{this}}</td>
+            </tr>
+          {{/each}}
+        </table>
+         <table class="table table-bordered" style="width: 15%">
+          <thead>
+            <tr>
+              <th scope="col">types</th>
+            </tr>
+          </thead>
+          {{#each subtypes_txt_sort}}
+            <tr>
+              <td>{{this}}</td>
+            </tr>
+          {{/each}}
+        </table>
+      </div>
+    {{/each}}
+
+  </div>
