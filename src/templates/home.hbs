@@ -5,24 +5,7 @@
     <input class="btn btn-primary" type="submit" value="Query">
   </div>
   <div id="results">
-    {{#each docs}}
-      <h2>{{ docs.name }}</h2>
-      <div>{{ docs.image }}</div>
-      <p>{{docs.text}}</p>
-      <h2>Information</h2>
-      <table>
-        <td>{{docs.cmc}}</td>
-        {{#each colors}}
-          <td>{{ docs.colors}}</td>
-        {{/each}}
-        <td>{{docs.power}}</td>
-        <td>{{docs.toughness}}</td>
-        {{#each subtypes}}
-          <td>{{docs.subtypes}}</td>
-        {{/each}}
-        <td>{{docs.rarity}}</td>
-      {{/each}}
-    </table>
+
   </div>
 </form>
 

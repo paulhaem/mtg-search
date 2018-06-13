@@ -30,9 +30,9 @@ function index() {
 }
 
 function results(obj){
-  console.log(obj.response.docs);
+  console.log(obj.response);
 
-  $app.html(resultTpl(obj.response.docs))
+  $app.html(resultTpl(obj.response))
 }
 
 function notFound() {
