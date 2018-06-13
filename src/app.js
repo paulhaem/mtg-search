@@ -47,9 +47,7 @@ function search(){
         return res.json()
       })
       .then(res => {
-        //console.log(res);
         results(res)
-        //$('#results').text(json)
       })
       .catch(err => {
         console.error(err)
