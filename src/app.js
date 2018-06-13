@@ -19,7 +19,7 @@ function index() {
       })
       .then(json => {
         console.log(json)
-        //$('#results').text(json)
+        $('#results').text(json)
       })
       .catch(err => {
         console.error(err)
