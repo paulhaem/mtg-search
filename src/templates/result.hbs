@@ -1,0 +1,18 @@
+<div id="results">
+  <h2>{{ name }}</h2>
+  <div>{{ image }}</div>
+  <p>{{text}}</p>
+  <h2>Information</h2>
+  <table>
+    <td>{{cmc}}</td>
+    {{#each colors}}
+      <td>{{ colors}}</td>
+    {{/each}}
+    <td>{{power}}</td>
+    <td>{{toughness}}</td>
+    {{#each subtypes}}
+      <td>{{subtypes}}</td>
+    {{/each}}
+    <td>{{rarity}}</td>
+    </table>
+  </div>
