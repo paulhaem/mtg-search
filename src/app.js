@@ -12,7 +12,18 @@ function index() {
   $app.html(homeTpl())
   $('#solr-query').submit(function() {
     let queryString = $('#title-field').val()
-    let queryFilter = '*'
+    let filter = [...filter]
+    let queryFilter = ''
+    if (filter[0]) {
+      for (const str of filter) {
+        queryFilter += str + ','
+      }
+      queryFilter.substring(0,queryFilter.length -1)
+    }
+    else{
+      queryFilter = '*'
+    }
+
 
     fetch(`http://127.0.0.1:8983/solr/gettingstarted/select?fl=${queryFilter}&q=${queryString}`)
       .then(res => {
