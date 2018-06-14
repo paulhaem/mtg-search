@@ -13,11 +13,13 @@ Handlebars.registerHelper('checker', function(data){
 })
 
 let input
+let colorsSelected
 function search(){
   $('#solr-query').submit(function() {
     input = $('#title-field').val()
     input = input.split(' ')
     let queryString = ''
+    colorsSelected = ''
 
     if (input[0]) { // empty check
       queryString = creatQueryString(input)
@@ -27,12 +29,16 @@ function search(){
       if(el.checked) choosen.push(el.value)
     })
     if(choosen.length > 0 ) {
-      queryString += ` AND colors_txt_sort:`
+      queryString += ` AND (colors_txt_sort:`
+      colorsSelected += ' AND (colors_txt_sort:'
       choosen.forEach(color => {
-        queryString += color + '+OR+'
+        queryString += color + ' OR colors_txt_sort:'
+        colorsSelected += color + ' OR colors_txt_sort:'
       })
-      queryString = queryString.substring(0,(queryString.length - 4))
+      queryString = queryString.substring(0,(queryString.length - 20)) + ")"
+      colorsSelected =colorsSelected.substring(0,(colorsSelected.length-20)) + ")"
     }
+
     input['colors'] = []
     input['colors'] = choosen
     console.log(queryString)
@@ -45,7 +51,7 @@ function creatQueryString(inputs){
   let queryString = ''
   for (const str of inputs) {
     queryString += `setName_txt_en:*${str}*^1 artist_txt_en:*${str}*^1.5 name_txt_en:*${str}*^2 text_txt_sort:*${str}*^1 `
-    queryString += `setName_txt_en:${str}^1 artist_txt_en:${str}^1.5 name_txt_en:${str}^2 text_txt_sort:${str}^1 `
+    queryString += `setName_txt_en:${str}^2 artist_txt_en:${str}^5 name_txt_en:${str}^5 text_txt_sort:${str}^1.2 `
   }
   return queryString
 }
@@ -88,8 +94,8 @@ function results(obj, input){
   else{
     word = obj.spellcheck.suggestions[1].suggestion[0].word.split(' ')
     let query = creatQueryString(word)
-    //word += filter
-    request(query )
+    query += colorsSelected
+    request(query)
   }
 
   search()
