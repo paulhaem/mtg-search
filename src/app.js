@@ -38,22 +38,10 @@ function search(){
       queryString = queryString.substring(0,(queryString.length - 4))
 
     }
-    console.log(queryString);
-
-    let filter = [...filter]
-    let queryFilter = ''
-    if (filter[0]) { // empty check
-      for (const str of filter) {
-        queryFilter += str + ','
-      }
-      queryFilter = queryFilter.substring(0,queryFilter.length -1)
-    }
-    else{
-      queryFilter = '*'
-    }
+    //console.log(queryString);
     input['colors'] = []
     input['colors'] = choosen
-    fetch(`http://127.0.0.1:8983/solr/gettingstarted/select?fl=${queryFilter}&q=${queryString}&rows=100`)
+    fetch(`http://127.0.0.1:8983/solr/gettingstarted/select?q=${queryString}&rows=100`)
       .then(res => {
         return res.json()
       })
