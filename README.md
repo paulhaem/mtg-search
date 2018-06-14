@@ -18,6 +18,7 @@ bin/solr -e schemaless
 npm install
 npm start
 
+# running solr server and client at the same machine requires enabling CORS everywhere. please install a suitable browser extension for that.
 ```
 
 ## Feld Typen

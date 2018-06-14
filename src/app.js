@@ -71,22 +71,29 @@ function index() {
   $app.html(homeTpl())
   search()
 }
-
+let word;
 function results(obj, input){
   console.log(obj)
   $app.html(resultTpl(obj.response))
   if (obj.response.numFound > 0) {
     $('h2 > #results-found').text(obj.response.numFound)
-    $('h2 > #query-string').text(input)
+    if(word) {
+      $('h2 > #query-string').text(word)
+      console.log(input)
+
+      $('#query-string').after(`" instead of "${input[0]}"`)
+    }
+    else $('h2 > #query-string').text(input + `"`)
+    word = null
     input['colors'].forEach(el => {
       $(`.form-check-input[value='${el}']`).prop('checked', true)
     })
   }
   else{
-    let word = obj.spellcheck.suggestions[1].suggestion[0].word.split(' ')
-    word = creatQueryString(word)
+    word = obj.spellcheck.suggestions[1].suggestion[0].word.split(' ')
+    let query = creatQueryString(word)
     //word += filter
-    request(word)
+    request(query )
   }
 
   search()
