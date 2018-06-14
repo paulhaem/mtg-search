@@ -22,7 +22,6 @@ function search(){
     if (input[0]) { // empty check
       queryString = creatQueryString(input)
     }
-    // query mit filter ??
     let choosen = []
     $('.form-check-input').each(function(index, el) {
       if(el.checked) choosen.push(el.value)
@@ -34,11 +33,9 @@ function search(){
       })
       queryString = queryString.substring(0,(queryString.length - 4))
     }
-    //console.log(queryString);
     input['colors'] = []
     input['colors'] = choosen
-    // http://127.0.0.1:8983/solr/gettingstarted/spell?q=${queryString}&rows=100
-    // spellchecker http://127.0.0.1:8983/solr/gettingstarted/spell?q=${input}&rows=100
+    console.log(queryString)
     request(queryString)
     return false
   })
@@ -50,7 +47,6 @@ function creatQueryString(inputs){
     queryString += `setName_txt_en:*${str}*^1 artist_txt_en:*${str}*^1.5 name_txt_en:*${str}*^2 text_txt_sort:*${str}*^1 `
     queryString += `setName_txt_en:${str}^1 artist_txt_en:${str}^1.5 name_txt_en:${str}^2 text_txt_sort:${str}^1 `
   }
-  console.log(queryString);
   return queryString
 }
 
