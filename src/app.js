@@ -76,7 +76,7 @@ function results(obj, input){
   console.log(obj)
   $app.html(resultTpl(obj.response))
   if (obj.response.numFound > 0) {
-    $('h2 > #results-found').text(obj.response.numFound)
+    $('h2 > #results-found').text(obj.response.numFound + ` result(s) found for "`)
     if(word) {
       $('h2 > #query-string').text(word)
       console.log(input)
