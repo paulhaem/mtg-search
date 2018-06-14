@@ -84,7 +84,9 @@ function results(obj, input){
   }
   else{
     let word = obj.spellcheck.suggestions[1].suggestion[0].word.split(' ')
-    request(creatQueryString(word))
+    word = creatQueryString(word)
+    //word += filter
+    request(word)
   }
 
   search()
