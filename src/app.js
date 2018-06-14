@@ -27,7 +27,7 @@ function search(){
       if(el.checked) choosen.push(el.value)
     })
     if(choosen.length > 0 ) {
-      queryString += ` AND colors_txt_sort:`
+      queryString += `AND colors_txt_sort:`
       choosen.forEach(color => {
         queryString += color + '+OR+'
       })
