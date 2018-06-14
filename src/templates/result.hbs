@@ -26,13 +26,15 @@
         <img src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{ multiverseId_i }}&type=card"/>
         <h3>Information</h3>
         <p>{{text_txt_sort}}</p>
-        <table class="table table-bordered" style="width: 30%">
+        <table class="table table-bordered" style="width: 100%">
           <thead>
             <tr>
               <th scope="col">costs</th>
               <th scope="col">power</th>
               <th scope="col">toughness</th>
               <th scope="col">rarity</th>
+              <th scope="col">artist</th>
+              <th scope="col">set</th>
             </tr>
           </thead>
           <tr>
@@ -40,6 +42,8 @@
             <td>{{checker power_i}}</td>
             <td>{{checker toughness_i}}</td>
             <td>{{rarity_txt_en}}</td>
+            <td>{{artist_txt_en}}</td>
+            <td>{{setName_txt_en}}</td>
           </tr>
         </table>
         <table class="table table-bordered" style="width: 15%">
