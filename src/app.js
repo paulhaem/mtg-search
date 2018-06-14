@@ -12,7 +12,7 @@ Handlebars.registerHelper('checker', function(data){
   return data < 0 ? '*': data
 })
 
-let input
+var input
 function search(){
   $('#solr-query').submit(function() {
     input = $('#title-field').val()
@@ -23,20 +23,9 @@ function search(){
       queryString = creatQueryString(input)
     }
     // query mit filter ??
-    let choosen = []
-    $('.form-check-input').each(function(index, el) {
-      if(el.checked) choosen.push(el.value)
-    })
-    if(choosen.length > 0 ) {
-      queryString += ` AND colors_txt_sort:`
-      choosen.forEach(color => {
-        queryString += color + '+OR+'
-      })
-      queryString = queryString.substring(0,(queryString.length - 4))
-    }
-    //console.log(queryString);
-    input['colors'] = []
-    input['colors'] = choosen
+    queryString = createFilterString(queryString)
+    console.log(queryString)
+
     // http://127.0.0.1:8983/solr/gettingstarted/spell?q=${queryString}&rows=100
     // spellchecker http://127.0.0.1:8983/solr/gettingstarted/spell?q=${input}&rows=100
     request(queryString)
@@ -50,7 +39,24 @@ function creatQueryString(inputs){
     queryString += `setName_txt_en:*${str}*^1 artist_txt_en:*${str}*^1.5 name_txt_en:*${str}*^2 text_txt_sort:*${str}*^1 `
     queryString += `setName_txt_en:${str}^1 artist_txt_en:${str}^1.5 name_txt_en:${str}^2 text_txt_sort:${str}^1 `
   }
-  console.log(queryString);
+  return queryString
+}
+
+function createFilterString(queryString) {
+  let choosen = []
+  $('.form-check-input').each(function(index, el) {
+    if(el.checked) choosen.push(el.value)
+  })
+  if(choosen.length > 0 ) {
+    queryString += `AND colors_txt_sort:`
+    choosen.forEach(color => {
+      queryString += color + '+OR+'
+    })
+    input['colors'] = []
+    input['colors'] = choosen
+    return queryString.substring(0,(queryString.length - 4))
+
+  }
   return queryString
 }
 
@@ -76,7 +82,7 @@ function results(obj, input){
   console.log(obj)
   $app.html(resultTpl(obj.response))
   if (obj.response.numFound > 0) {
-    $('h2 > #results-found').text(obj.response.numFound)
+    $('h2 > #results-found').html(obj.response.numFound + ` result(s) found for "`)
     if(word) {
       $('h2 > #query-string').text(word)
       console.log(input)
@@ -92,8 +98,10 @@ function results(obj, input){
   else{
     word = obj.spellcheck.suggestions[1].suggestion[0].word.split(' ')
     let query = creatQueryString(word)
-    //word += filter
-    request(query )
+    query = createFilterString(query)
+    console.log(query);
+
+    request(query)
   }
 
   search()
